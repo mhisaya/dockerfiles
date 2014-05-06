@@ -17,11 +17,12 @@ RUN    apt-get update
 RUN    apt-get install -y nodejs
 
 # App
-ADD ./src /src
+ADD ./src/service /src/service
+ADD ./src/angular/app /src/angular/app
 
 # Install app dependencies
-RUN cd /src; npm install
+RUN cd /src/service; npm install
 
 EXPOSE  8080
-CMD ["node", "/src/index.js"]
+CMD ["node", "/src/service/index.js"]
 
